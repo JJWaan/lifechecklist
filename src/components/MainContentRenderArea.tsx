@@ -1,12 +1,12 @@
 import React from 'react';
 
+import UserCard from './user/UserCard';
+
 const MainContentRenderArea = () => {
     return (
         <>
             <main>
-                <h3>Main content here</h3>
-                <h3>Main content here</h3>
-                <h3>Main content here</h3>
+                <UserCard />
             </main>
         </>
     );
