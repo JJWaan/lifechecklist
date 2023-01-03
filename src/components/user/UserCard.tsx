@@ -10,12 +10,12 @@ import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const cards = [1,2,3,4,5,6,7,8,9];
+const cards = [1,2,3,4,5,6,7,8,9,10,11,12];
 
 const UserCard = () => {
     return (
         <>
-            <div>
+            {/* <div> */}
                 <Container maxWidth="md">
                     <Grid container spacing={4}>
                         {cards.map((card) => (
@@ -33,10 +33,10 @@ const UserCard = () => {
                                         component='image'
                                         height="140"
                                         // sx={{height: 140}}
-                                        // image="dummy_img/contemplative-reptile.jpg"
+                                        // image="/dummy_img/contemplative-reptile.jpg"
                                     />
                                     <CardContent>
-                                        <Typography variant='h5' gutterBottom>
+                                        <Typography variant='h5' gutterBottom color="primary">
                                             Card content title
                                         </Typography>
                                         <Typography variant='body2'>
@@ -60,7 +60,7 @@ const UserCard = () => {
                         ))}
                     </Grid>
                 </Container>
-            </div>
+            {/* </div> */}
         </>
     );
 }

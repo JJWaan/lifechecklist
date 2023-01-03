@@ -1,3 +1,57 @@
-main, header, nav {
+/* main {
   border: 1px solid #000;
+} */
+
+nav {
+  height: 6rem;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  background-color: #fb8500;
+  opacity: 1;
+  padding: 1rem;
+}
+
+.nav-link {
+  display: flex;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 2rem;
+  background-color: #fb8500;
+}
+
+.nav-link:hover {
+  display: flex;
+  border-radius: 2rem;
+  background-color: #ffb703;
+  transform: scale(1.2, 1.2);
+  transition-duration: 0.2s;
+}
+
+.nav-link:active {
+  background-color: #ffee32;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.hero-title {
+  margin-bottom: 2rem;
+}
+
+.hero-paragraph {
+  max-width: 40%;
 }
