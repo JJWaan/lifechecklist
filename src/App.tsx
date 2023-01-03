@@ -12,8 +12,10 @@ import MainContentRenderArea from './components/MainContentRenderArea';
 const App = () => {
   return (
     <>
-      <MainNavbar />
-      <MainHero />
+      <div className='parent'>
+        <MainNavbar />
+        <MainHero />
+      </div>
       <MainContentRenderArea />
     </>
   );

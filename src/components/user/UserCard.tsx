@@ -10,13 +10,16 @@ import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import SendIcon from '@mui/icons-material/Send';
+import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
+
 const cards = [1,2,3,4,5,6,7,8,9,10,11,12];
 
 const UserCard = () => {
     return (
         <>
-            {/* <div> */}
-                <Container maxWidth="md">
+            <div className='user-card-container'>
+                {/* <Container maxWidth="md"> */}
                     <Grid container spacing={4}>
                         {cards.map((card) => (
                             <Grid
@@ -27,40 +30,45 @@ const UserCard = () => {
                                 md={4}
                                 lg={3}
                             >
-                                <Card variant="outlined">
+                                <Card variant="outlined" sx={{maxWidth: 240}}>
                                     <CardActionArea>
-                                    <CardMedia
-                                        component='image'
-                                        height="140"
-                                        // sx={{height: 140}}
-                                        // image="/dummy_img/contemplative-reptile.jpg"
-                                    />
-                                    <CardContent>
-                                        <Typography variant='h5' gutterBottom color="primary">
-                                            Card content title
-                                        </Typography>
-                                        <Typography variant='body2'>
-                                            Card content text
-                                        </Typography>
-                                    </CardContent>
+                                        {/* <CardMedia
+                                            component='img'
+                                            sx={{height: 140}}
+                                            src="/dummy_img/contemplative-reptile.jpg"
+                                            
+                                        /> */}
+                                        <CardContent>
+                                            <Typography variant='h5' gutterBottom color="primary">
+                                                Card content title
+                                            </Typography>
+                                            <Typography variant='body2' paragraph>
+                                                Card content text
+                                            </Typography>
+                                        </CardContent>
                                     </CardActionArea>
                                         <CardActions>
-                                            <Button size="small">Yes</Button>
-                                            <Button size="small">No</Button>
                                             <Button
-                                                onClick={() => {
-                                                    alert('clicked');
-                                                }}
+                                                size="small"
+                                                variant="contained"
+                                                endIcon={<SendIcon />}
                                             >
-                                                Click me
+                                                Yes
+                                            </Button>
+                                            <Button
+                                                size="small"
+                                                variant="outlined"
+                                                endIcon={<DoNotDisturbIcon />}
+                                            >
+                                                No
                                             </Button>
                                         </CardActions>
                                 </Card>
                             </Grid>
                         ))}
                     </Grid>
-                </Container>
-            {/* </div> */}
+                {/* </Container> */}
+            </div>
         </>
     );
 }

@@ -6,6 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonIcon from '@mui/icons-material/Person';
 import InfoIcon from '@mui/icons-material/Info';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const MainNavbar = () => {
     return (
@@ -26,6 +27,11 @@ const MainNavbar = () => {
                         <InfoOutlinedIcon sx={{ fontSize: 40 }} />
                     </div>
                 </div>
+                {/* <div className='nav-link'>
+                    <div className='nav-icon'>
+                        <LogoutIcon sx={{ fontSize: 40 }} />
+                    </div>
+                </div> */}
             </nav>
         </>
     );
