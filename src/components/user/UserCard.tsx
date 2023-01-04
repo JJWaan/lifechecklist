@@ -28,13 +28,10 @@ type TaskProps = {
 };
 
 const UserCard = (props: TaskProps) => {
-    // console.log(props);
+    console.log(props);
     return (
         <>
             <div className="single-card-container">
-                {/* <Container maxWidth="md"> */}
-                {/* <Grid container spacing={4}> */}
-                {/* <Grid item xs={12} sm={6} md={4} lg={3}> */}
                 <Card>
                     <CardActionArea>
                         <CardContent>
@@ -67,9 +64,6 @@ const UserCard = (props: TaskProps) => {
                         </Button>
                     </CardActions>
                 </Card>
-                {/* </Grid> */}
-                {/* </Grid> */}
-                {/* </Container> */}
             </div>
         </>
     );
