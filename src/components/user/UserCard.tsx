@@ -1,9 +1,6 @@
 import React from "react";
 
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
@@ -28,7 +25,7 @@ type TaskProps = {
 };
 
 const UserCard = (props: TaskProps) => {
-    console.log(props);
+    // console.log(props);
     return (
         <>
             <div className="single-card-container">

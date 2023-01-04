@@ -1,8 +1,11 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 
+import NewCard from "./NewCard";
 import UserCard from "./user/UserCard";
+
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 // let mainstate: {
 //     taskData: any | null;
@@ -46,6 +49,7 @@ type Task = {
 
 const MainContentRenderArea = () => {
     const [state, dispatch] = useReducer(reducer, mainstate);
+    const [showAddCard, setShowAddCard] = useState(false);
 
     useEffect(() => {
         const getDB = async () => {
@@ -76,10 +80,18 @@ const MainContentRenderArea = () => {
         <>
             <main>
                 <div className="add-card-container">
-                    <div className="add-card-icon">
-                        <AddCircleOutlineIcon sx={{ fontSize: 120 }} />
+                    <div
+                        className="add-card-icon"
+                        onClick={() => setShowAddCard(!showAddCard)}
+                    >
+                        {!showAddCard ? (
+                            <AddCircleOutlineIcon sx={{ fontSize: 120 }} />
+                        ) : (
+                            <RemoveCircleOutlineIcon sx={{ fontSize: 120 }} />
+                        )}
                     </div>
                 </div>
+                {showAddCard ? <NewCard /> : null}
                 <div className="cards-container">{tasks}</div>
             </main>
         </>

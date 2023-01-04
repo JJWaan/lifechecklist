@@ -108,3 +108,34 @@ nav {
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
     border-radius: 0.4rem;
 }
+
+.new-card-input-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+/* .new-card-inputfield {
+
+} */
+
+.new-card-input-icon {
+    display: flex;
+    margin-left: 0.6rem;
+    border-radius: 4rem;
+    background-color: #ffb703;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+}
+
+.new-card-input-icon:hover {
+    display: flex;
+    border-radius: 4rem;
+    background-color: #18ff59;
+    transform: scale(1.4, 1.4);
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.new-card-input-icon:active {
+    background-color: #dfffd2;
+}
