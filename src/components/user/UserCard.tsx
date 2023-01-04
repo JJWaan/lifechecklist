@@ -18,58 +18,59 @@ import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
 // task_id: "1";
 // task_text: "new task";
 
-const UserCard = (props: any) => {
-    console.log(props);
+type TaskProps = {
+    task: {
+        task_complete: boolean;
+        task_date: string;
+        task_id: number;
+        task_text: string;
+    };
+};
+
+const UserCard = (props: TaskProps) => {
+    // console.log(props);
     return (
         <>
-            {/* <div className='user-card-container'> */}
-            <Container maxWidth="md">
-                <Grid container spacing={4}>
-                    {/* {cards.map((card) => ( */}
-                    <Grid item key={props.task_id} xs={12} sm={6} md={4} lg={3}>
-                        <Card sx={{ maxWidth: 240 }}>
-                            <CardActionArea>
-                                {/* <CardMedia
-                                            component='img'
-                                            sx={{height: 140}}
-                                            src="/dummy_img/contemplative-reptile.jpg"
-                                            
-                                        /> */}
-                                <CardContent>
-                                    <Typography
-                                        variant="body1"
-                                        gutterBottom
-                                        color="primary"
-                                    >
-                                        {props.taskData[0].task_date}
-                                    </Typography>
-                                    <Typography variant="body2" paragraph>
-                                        {props.taskData[0].task_text}
-                                    </Typography>
-                                </CardContent>
-                            </CardActionArea>
-                            <CardActions>
-                                <Button
-                                    size="small"
-                                    variant="contained"
-                                    endIcon={<SendIcon />}
-                                >
-                                    Yes
-                                </Button>
-                                <Button
-                                    size="small"
-                                    variant="outlined"
-                                    endIcon={<DoNotDisturbIcon />}
-                                >
-                                    No
-                                </Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                    {/* ))} */}
-                </Grid>
-            </Container>
-            {/* </div> */}
+            <div className="single-card-container">
+                {/* <Container maxWidth="md"> */}
+                {/* <Grid container spacing={4}> */}
+                {/* <Grid item xs={12} sm={6} md={4} lg={3}> */}
+                <Card>
+                    <CardActionArea>
+                        <CardContent>
+                            <Typography
+                                variant="body1"
+                                gutterBottom
+                                color="primary"
+                            >
+                                {props.task.task_date}
+                            </Typography>
+                            <Typography variant="body2" paragraph>
+                                {props.task.task_text}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button
+                            size="small"
+                            variant="contained"
+                            endIcon={<SendIcon />}
+                        >
+                            Yes
+                        </Button>
+                        <Button
+                            size="small"
+                            variant="outlined"
+                            endIcon={<DoNotDisturbIcon />}
+                        >
+                            No
+                        </Button>
+                    </CardActions>
+                </Card>
+                {/* </Grid> */}
+                {/* </Grid> */}
+                {/* </Container> */}
+            </div>
         </>
     );
 };
