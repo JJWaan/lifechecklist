@@ -60,64 +60,73 @@ nav {
     max-width: 40%;
 }
 
+/* big orange buttons & inputs */
 .add-card-container {
     display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 2rem;
-    border-radius: 4rem;
-    background-color: #ffb703;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
-}
-
-.add-card-container:hover {
-    display: flex;
-    border-radius: 4rem;
-    background-color: #18ff59;
-    /* background-color: #ffb703; */
-    transform: scale(1.4, 1.4);
-    transition-duration: 0.2s;
-    cursor: pointer;
-}
-
-.add-card-container:active {
     background-color: #dfffd2;
 }
 
 .add-card-icon {
     display: flex;
     align-items: center;
+    border-radius: 4rem;
+    background-color: #ffb703;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
 }
 
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    /* padding: 1rem; */
-    padding: 1rem 0 0 0;
-    margin: 0 1rem 1rem 1rem;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
-    border-radius: 0.4rem;
+/* big orange btn anim */
+@keyframes move-left {
+    from {
+        transform: translate(0%, 0%);
+    }
+    to {
+        transform: translate(-40%, 0%);
+    }
+}
+
+.move-left {
+    animation-name: move-left;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.add-card-icon:hover {
+    transform: scale(1.4, 1.4);
+    transition-duration: 0.2s;
+    cursor: pointer;
+    background-color: #18ff59;
+}
+
+.add-card-icon:active {
     background-color: #dfffd2;
-}
-
-.single-card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 1rem 1rem 1rem;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
-    border-radius: 0.4rem;
 }
 
 .new-card-input-container {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1rem;
+    opacity: 0;
+    /* background-color: #fb8500; */
 }
 
-/* .new-card-inputfield {
+@keyframes input-fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
-} */
+.input-fadein {
+    animation-name: input-fadein;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
 
 .new-card-input-icon {
     display: flex;
@@ -138,4 +147,27 @@ nav {
 
 .new-card-input-icon:active {
     background-color: #dfffd2;
+}
+
+/* cards below hero-section */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* padding: 1rem; */
+    padding: 1rem 0 0 0;
+    margin: 0 1rem 1rem 1rem;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+    border-radius: 0.4rem;
+    background-color: #dfffd2;
+}
+
+.single-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem 1rem 1rem;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+    border-radius: 0.4rem;
 }

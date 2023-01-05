@@ -50,6 +50,7 @@ type Task = {
 const MainContentRenderArea = () => {
     const [state, dispatch] = useReducer(reducer, mainstate);
     const [showAddCard, setShowAddCard] = useState(false);
+    const [animActive, setAnimActive] = useState(false);
 
     useEffect(() => {
         const getDB = async () => {
@@ -76,13 +77,44 @@ const MainContentRenderArea = () => {
         return <UserCard task={item} key={index} />;
     });
 
+    const element = document.getElementById("big-orange-btn");
+    {
+        animActive
+            ? element?.classList.add("move-left")
+            : element?.classList.remove("move-left");
+    }
+
+    // const inputti = document.getElementById("input-container");
+    // {
+    //     animActive
+    //         ? inputti?.classList.add("input-fadein")
+    //         : inputti?.classList.remove("input-fadein");
+    // }
+
+    const getInputLoota = () => {
+        const inputti = document.getElementById("input-container");
+        {
+            animActive
+                ? inputti?.classList.add("input-fadein")
+                : inputti?.classList.remove("input-fadein");
+        }
+    };
+
+    setTimeout(getInputLoota, 250);
+
+    const handleClick = () => {
+        setShowAddCard(!showAddCard);
+        setAnimActive(!animActive);
+    };
+
     return (
         <>
             <main>
                 <div className="add-card-container">
                     <div
+                        id="big-orange-btn"
                         className="add-card-icon"
-                        onClick={() => setShowAddCard(!showAddCard)}
+                        onClick={handleClick}
                     >
                         {!showAddCard ? (
                             <AddCircleOutlineIcon sx={{ fontSize: 120 }} />
@@ -90,8 +122,9 @@ const MainContentRenderArea = () => {
                             <RemoveCircleOutlineIcon sx={{ fontSize: 120 }} />
                         )}
                     </div>
+                    {showAddCard ? <NewCard /> : null}
+                    {/* <NewCard /> */}
                 </div>
-                {showAddCard ? <NewCard /> : null}
                 <div className="cards-container">{tasks}</div>
             </main>
         </>
