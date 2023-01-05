@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "Inspiration-Regular";
+    src: local("Inspiration-Regular"),
+        url(../fonts/Inspiration-Regular.ttf) format("truetype");
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -54,6 +60,29 @@ nav {
 
 .hero-title {
     margin-bottom: 1rem;
+    font-family: Inspiration-Regular;
+    font-size: 10vw;
+    margin: 0;
+}
+
+.hero-title:hover {
+    color: #18ff59;
+    animation-name: hero-title-color;
+    animation-duration: 1.2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    cursor: pointer;
+}
+
+@keyframes hero-title-color {
+    from {
+        color: #000;
+        transform: scale(1, 1);
+    }
+    to {
+        color: #18ff59;
+        transform: scale(1.2, 1.2);
+    }
 }
 
 .hero-paragraph {
@@ -63,11 +92,10 @@ nav {
 /* big orange buttons & inputs */
 .add-card-container {
     display: flex;
-    width: 80%;
+    width: 40%;
     align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
-    background-color: #dfffd2;
 }
 
 .add-card-icon {
@@ -97,7 +125,7 @@ nav {
 
 .add-card-icon:hover {
     transform: scale(1.4, 1.4);
-    transition-duration: 0.2s;
+    transition-duration: 0.4s;
     cursor: pointer;
     background-color: #18ff59;
 }
@@ -125,6 +153,7 @@ nav {
 .input-fadein {
     animation-name: input-fadein;
     animation-duration: 0.4s;
+    animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
 
@@ -160,7 +189,7 @@ nav {
     margin: 0 1rem 1rem 1rem;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
     border-radius: 0.4rem;
-    background-color: #dfffd2;
+    background-color: #fffcec;
 }
 
 .single-card-container {

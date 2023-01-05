@@ -84,15 +84,8 @@ const MainContentRenderArea = () => {
             : element?.classList.remove("move-left");
     }
 
-    // const inputti = document.getElementById("input-container");
-    // {
-    //     animActive
-    //         ? inputti?.classList.add("input-fadein")
-    //         : inputti?.classList.remove("input-fadein");
-    // }
-
     const getInputLoota = () => {
-        const inputti = document.getElementById("input-container");
+        const inputti = document.getElementById("input");
         {
             animActive
                 ? inputti?.classList.add("input-fadein")
@@ -100,7 +93,7 @@ const MainContentRenderArea = () => {
         }
     };
 
-    setTimeout(getInputLoota, 250);
+    setTimeout(getInputLoota, 100);
 
     const handleClick = () => {
         setShowAddCard(!showAddCard);
@@ -123,7 +116,6 @@ const MainContentRenderArea = () => {
                         )}
                     </div>
                     {showAddCard ? <NewCard /> : null}
-                    {/* <NewCard /> */}
                 </div>
                 <div className="cards-container">{tasks}</div>
             </main>

@@ -50,14 +50,14 @@ const UserCard = (props: TaskProps) => {
                             variant="contained"
                             endIcon={<SendIcon />}
                         >
-                            Yes
+                            Edit
                         </Button>
                         <Button
                             size="small"
                             variant="outlined"
                             endIcon={<DoNotDisturbIcon />}
                         >
-                            No
+                            Delete
                         </Button>
                     </CardActions>
                 </Card>

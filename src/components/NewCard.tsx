@@ -14,22 +14,17 @@ const NewCard = () => {
 
     return (
         <>
-            <div className="new-card-input-container" id="input-container">
-                <div className="new-card-inputfield" id="input-container">
+            <div className="new-card-input-container" id="input">
+                <div className="new-card-inputfield">
                     <Input
-                        id="input-container"
                         autoFocus
                         type="text"
                         placeholder="What ya wanna do?"
                         onChange={handleInput}
                     />
                 </div>
-                <div
-                    className="new-card-input-icon"
-                    id="input-container"
-                    onClick={handleClick}
-                >
-                    <CheckIcon id="input-container" sx={{ fontSize: 40 }} />
+                <div className="new-card-input-icon" onClick={handleClick}>
+                    <CheckIcon sx={{ fontSize: 40 }} />
                 </div>
             </div>
         </>
