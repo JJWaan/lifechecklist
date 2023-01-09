@@ -13,8 +13,8 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 // };
 
 const NewCard = () => {
-    const moi = useContext(Konteksti);
-    console.log(moi);
+    const masterContext = useContext(Konteksti);
+    console.log(masterContext);
 
     const [inputText, setInputText] = useState({ task: "" });
 
@@ -26,16 +26,19 @@ const NewCard = () => {
     const handleClick = async (event: React.MouseEvent<HTMLDivElement>) => {
         console.log("click", event);
         try {
+            const url = "http://localhost:8080/tasks";
             if (inputText.task.length < 1) {
                 throw new Error();
             }
-            await axios.post("http://localhost:8080/tasks", {
+            await axios.post(url, {
                 task: inputText.task,
             });
+            setInputText({ task: "" });
             console.log("POST ok");
         } catch (error) {
             console.log("Catch block:", error);
         }
+        masterContext?.setFlag(!masterContext.flag);
     };
 
     return (
@@ -47,6 +50,7 @@ const NewCard = () => {
                         type="text"
                         name="task"
                         placeholder="What ya wanna do?"
+                        value={inputText.task}
                         onChange={handleInput}
                     />
                 </div>

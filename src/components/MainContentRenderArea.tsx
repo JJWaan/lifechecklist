@@ -1,5 +1,6 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState, useContext } from "react";
 import axios from "axios";
+import { Konteksti } from "../App";
 
 import NewCard from "./NewCard";
 import UserCard from "./user/UserCard";
@@ -21,12 +22,14 @@ let mainstate = {
     taskData: null,
     initialized: false,
     rerender: false,
+    tarkkailija: false,
 };
 
 // reducer action types
 const ACTIONS = {
     INITDATA: "INIT_DATA",
     RERENDER: "RE_RENDER",
+    NEWPOST: "NEW_POST",
 };
 
 // reducer, state management
@@ -40,11 +43,18 @@ const reducer = (state: any, action: any) => {
                 taskData: action.payload.taskData,
                 initialized: action.payload.initialized,
             };
-        case ACTIONS.RERENDER:
-            console.log("rr data reducer case");
-            return {
-                rerender: action.payload.rerender,
-            };
+        // these below are not used at the moment:
+        // case ACTIONS.RERENDER:
+        //     console.log("rr data reducer case");
+        //     return {
+        //         rerender: action.payload.rerender,
+        //         tarkkailija: false,
+        //     };
+        // case ACTIONS.NEWPOST:
+        //     console.log("new post reducer case");
+        //     return {
+        //         tarkkailija: action.payload.tarkkailija,
+        //     };
 
         default:
             return state;
@@ -63,13 +73,15 @@ const MainContentRenderArea = () => {
     const [showAddCard, setShowAddCard] = useState(false);
     const [animActive, setAnimActive] = useState(false);
 
+    const masterContext = useContext(Konteksti);
+
     useEffect(() => {
         const getDB = async () => {
             try {
                 const url = "http://localhost:8080/tasks";
                 let initialData = await axios.get(url);
                 dispatch({
-                    type: "INIT_DATA",
+                    type: ACTIONS.INITDATA,
                     payload: {
                         taskData: initialData.data,
                         initialized: true,
@@ -80,21 +92,7 @@ const MainContentRenderArea = () => {
             }
         };
         getDB();
-    }, []);
-
-    // useEffect(() => {
-    //     const reRenderCards = async () => {
-    //         try {
-    //             dispatch({ type: "SAVING", payload: { rerender: true } });
-    //             console.log("tallennetaan");
-    //         } catch (error) {
-    //             console.log("saving failed", error);
-    //         }
-    //     };
-    //     if (mainstate.rerender === true) {
-    //         reRenderCards();
-    //     }
-    // }, [mainstate.rerender]);
+    }, [masterContext?.flag]);
 
     const tasks = state.taskData?.map((item: Task, index: number) => {
         return <UserCard task={item} key={index} />;
@@ -123,7 +121,9 @@ const MainContentRenderArea = () => {
         setAnimActive(!animActive);
     };
 
-    console.log("mainstate:", mainstate);
+    // if (hei?.flag === true) {
+    //     hei.setKeijo(true);
+    // }
 
     return (
         <>
