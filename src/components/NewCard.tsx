@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 
+import { Konteksti } from "../App";
+
 import Input from "@mui/material/Input";
-import CheckIcon from "@mui/icons-material/Check";
+// import CheckIcon from "@mui/icons-material/Check";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
+// type ContextProps = {
+//     flag: boolean;
+//     setFlag: () => void;
+// };
+
 const NewCard = () => {
+    const moi = useContext(Konteksti);
+    console.log(moi);
+
     const [inputText, setInputText] = useState({ task: "" });
 
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +33,6 @@ const NewCard = () => {
                 task: inputText.task,
             });
             console.log("POST ok");
-            setInputText({ task: "" });
         } catch (error) {
             console.log("Catch block:", error);
         }
@@ -42,7 +51,7 @@ const NewCard = () => {
                     />
                 </div>
                 <div className="new-card-input-icon" onClick={handleClick}>
-                    <CheckIcon sx={{ fontSize: 40 }} />
+                    <CheckCircleOutlineIcon sx={{ fontSize: 40 }} />
                 </div>
             </div>
         </>

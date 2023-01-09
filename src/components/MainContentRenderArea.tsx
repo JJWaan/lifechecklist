@@ -20,19 +20,30 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 let mainstate = {
     taskData: null,
     initialized: false,
-    saving: false,
+    rerender: false,
+};
+
+// reducer action types
+const ACTIONS = {
+    INITDATA: "INIT_DATA",
+    RERENDER: "RE_RENDER",
 };
 
 // reducer, state management
 const reducer = (state: any, action: any) => {
     switch (action.type) {
         // initialize state on first load (useEffect):
-        case "INIT_DATA":
+        case ACTIONS.INITDATA:
             console.log("init data reducer case");
             return {
                 ...state,
                 taskData: action.payload.taskData,
                 initialized: action.payload.initialized,
+            };
+        case ACTIONS.RERENDER:
+            console.log("rr data reducer case");
+            return {
+                rerender: action.payload.rerender,
             };
 
         default:
@@ -55,10 +66,8 @@ const MainContentRenderArea = () => {
     useEffect(() => {
         const getDB = async () => {
             try {
-                let initialData = await axios.get(
-                    "http://localhost:8080/tasks"
-                );
-                // console.log("i data:", initialData);
+                const url = "http://localhost:8080/tasks";
+                let initialData = await axios.get(url);
                 dispatch({
                     type: "INIT_DATA",
                     payload: {
@@ -72,6 +81,20 @@ const MainContentRenderArea = () => {
         };
         getDB();
     }, []);
+
+    // useEffect(() => {
+    //     const reRenderCards = async () => {
+    //         try {
+    //             dispatch({ type: "SAVING", payload: { rerender: true } });
+    //             console.log("tallennetaan");
+    //         } catch (error) {
+    //             console.log("saving failed", error);
+    //         }
+    //     };
+    //     if (mainstate.rerender === true) {
+    //         reRenderCards();
+    //     }
+    // }, [mainstate.rerender]);
 
     const tasks = state.taskData?.map((item: Task, index: number) => {
         return <UserCard task={item} key={index} />;
@@ -99,6 +122,8 @@ const MainContentRenderArea = () => {
         setShowAddCard(!showAddCard);
         setAnimActive(!animActive);
     };
+
+    console.log("mainstate:", mainstate);
 
     return (
         <>
