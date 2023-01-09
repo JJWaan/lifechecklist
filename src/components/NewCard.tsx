@@ -12,7 +12,11 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 //     setFlag: () => void;
 // };
 
-const NewCard = () => {
+type NewCardProps = {
+    korttiauki: boolean;
+};
+
+const NewCard = (props: NewCardProps) => {
     const masterContext = useContext(Konteksti);
     console.log(masterContext);
 
@@ -38,7 +42,11 @@ const NewCard = () => {
         } catch (error) {
             console.log("Catch block:", error);
         }
-        masterContext?.setFlag(!masterContext.flag);
+        // kind of useless because of how this component is being conditionally rendered,
+        // but i'm keeping this if-statement&prop here for possible future component render's modification
+        if (props.korttiauki) {
+            masterContext?.setFlag(!masterContext.flag);
+        }
     };
 
     return (

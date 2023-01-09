@@ -121,10 +121,6 @@ const MainContentRenderArea = () => {
         setAnimActive(!animActive);
     };
 
-    // if (hei?.flag === true) {
-    //     hei.setKeijo(true);
-    // }
-
     return (
         <>
             <main>
@@ -140,7 +136,7 @@ const MainContentRenderArea = () => {
                             <RemoveCircleOutlineIcon sx={{ fontSize: 120 }} />
                         )}
                     </div>
-                    {showAddCard ? <NewCard /> : null}
+                    {showAddCard ? <NewCard korttiauki={showAddCard} /> : null}
                 </div>
                 <div className="cards-container">{tasks}</div>
             </main>
