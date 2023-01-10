@@ -28,7 +28,6 @@ const NewCard = (props: NewCardProps) => {
     };
 
     const handleClick = async (event: React.MouseEvent<HTMLDivElement>) => {
-        console.log("click", event);
         try {
             const url = "http://localhost:8080/tasks";
             if (inputText.task.length < 1) {

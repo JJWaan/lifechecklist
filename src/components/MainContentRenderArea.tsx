@@ -37,7 +37,7 @@ const reducer = (state: any, action: any) => {
     switch (action.type) {
         // initialize state on first load (useEffect):
         case ACTIONS.INITDATA:
-            console.log("init data reducer case");
+            // console.log("init data reducer case");
             return {
                 ...state,
                 taskData: action.payload.taskData,
@@ -99,19 +99,15 @@ const MainContentRenderArea = () => {
     });
 
     const element = document.getElementById("big-orange-btn");
-    {
-        animActive
-            ? element?.classList.add("move-left")
-            : element?.classList.remove("move-left");
-    }
+    animActive
+        ? element?.classList.add("move-left")
+        : element?.classList.remove("move-left");
 
     const getInputLoota = () => {
         const inputti = document.getElementById("input");
-        {
-            animActive
-                ? inputti?.classList.add("input-fadein")
-                : inputti?.classList.remove("input-fadein");
-        }
+        animActive
+            ? inputti?.classList.add("input-fadein")
+            : inputti?.classList.remove("input-fadein");
     };
 
     setTimeout(getInputLoota, 100);

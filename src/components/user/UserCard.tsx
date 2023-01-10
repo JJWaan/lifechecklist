@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import axios from "axios";
+
+import { Konteksti } from "../../App";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -6,6 +9,11 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
 
 import SendIcon from "@mui/icons-material/Send";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
@@ -26,9 +34,38 @@ type TaskProps = {
 
 const UserCard = (props: TaskProps) => {
     // console.log(props);
+    const masterContext = useContext(Konteksti);
+
+    const handleClick = () => {
+        console.log("click", props.task.task_id);
+    };
+
+    const [openDeleteAlert, setOpenDeleteAlert] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpenDeleteAlert(true);
+    };
+
+    const handleClose = () => {
+        setOpenDeleteAlert(false);
+    };
+
+    const handleDeletion = async () => {
+        try {
+            const id = props.task.task_id;
+            const url = `http://localhost:8080/tasks/${id}`;
+            await axios.delete(url);
+            console.log("DEL ok");
+            handleClose();
+            masterContext?.setFlag(!masterContext.flag);
+        } catch (error) {
+            console.log("Catch block:", error);
+        }
+    };
+
     return (
         <>
-            <div className="single-card-container">
+            <div className="single-card-container" onClick={handleClick}>
                 <Card>
                     <CardActionArea>
                         <CardContent>
@@ -55,11 +92,29 @@ const UserCard = (props: TaskProps) => {
                         <Button
                             size="small"
                             variant="outlined"
+                            onClick={handleClickOpen}
                             endIcon={<DoNotDisturbIcon />}
                         >
                             Delete
                         </Button>
                     </CardActions>
+                    <Dialog
+                        open={openDeleteAlert}
+                        onClose={handleClose}
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                You sure? Deletion is permanent
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Cancel</Button>
+                            <Button onClick={handleDeletion} autoFocus>
+                                Yep
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                 </Card>
             </div>
         </>
