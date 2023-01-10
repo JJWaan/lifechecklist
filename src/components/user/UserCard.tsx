@@ -35,11 +35,6 @@ type TaskProps = {
 const UserCard = (props: TaskProps) => {
     // console.log(props);
     const masterContext = useContext(Konteksti);
-
-    const handleClick = () => {
-        console.log("click", props.task.task_id);
-    };
-
     const [openDeleteAlert, setOpenDeleteAlert] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -61,6 +56,10 @@ const UserCard = (props: TaskProps) => {
         } catch (error) {
             console.log("Catch block:", error);
         }
+    };
+
+    const handleClick = () => {
+        console.log("click, id:", props.task.task_id);
     };
 
     return (
